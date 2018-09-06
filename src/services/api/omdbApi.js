@@ -6,10 +6,7 @@ function search(term, type = null, year = null) {
 
     // if IMDB movie id
     if(/^tt\d+$/.test(term)) {
-        return request({
-            url: `i=${term}`,
-            method: 'GET'
-        });
+        return this.getById(term);
     }
 
     query += `&s=${term}`;
@@ -28,9 +25,16 @@ function search(term, type = null, year = null) {
     });
 }
 
+function getById(imdb) {
+    return request({
+        url: `&i=${imdb}`,
+        method: 'GET'
+    });
+}
+
 
 const omdbApi = {
-    search
+    search, getById
 };
 
 export default omdbApi;

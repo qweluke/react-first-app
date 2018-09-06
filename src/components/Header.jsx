@@ -8,8 +8,9 @@ export default class Header extends Component {
         return (
             <div>
                 <Nav>
-                    <Link to="/" className="nav-link active">Link</Link>
-                    <Link to="/schedule" className="nav-link">Link</Link>
+                    <Link to="/" className="nav-link active">Home</Link>
+                    <Link to="/tt0117731" className="nav-link">Star Trek</Link>
+                    <Link to="/tt0118480" className="nav-link">StarGate</Link>
                 </Nav>
             </div>
         );
