@@ -18,6 +18,10 @@ class Home extends React.Component {
         };
     }
 
+    componentDidMount() {
+        document.title = 'OMDB app';
+    }
+
     search = (event) => {
         this.setState({
             searchForm: {
