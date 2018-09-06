@@ -7,7 +7,7 @@ class MovieItem extends React.Component {
 
     render() {
         return(
-            <Card>
+            <Card className="entry-info">
                 <CardImg top width="100%" src={this.props.Poster} alt="Card image cap" />
                 <CardBody >
                     <CardTitle className="col-12">{this.props.Title}</CardTitle>

@@ -29,7 +29,6 @@ class MovieInfo extends React.Component {
     }
 
     getMovieInfo() {
-        console.log('##>', this.state.imdbId);
         document.title = 'loading';
         omdbApi.getById(this.state.imdbId)
             .then((response) => {
@@ -120,12 +119,14 @@ class MovieInfo extends React.Component {
                                 </Col>
                             </Row>
 
+                            {this.state.result.BoxOffice &&
                             <Row className="px-4">
                                 <Col>
                                     <h4>Box Office</h4>
                                     <p>{this.state.result.BoxOffice}</p>
                                 </Col>
                             </Row>
+                            }
 
                         </div>
                     }

@@ -1,0 +1,8 @@
+.entry-info .card-img-top {
+  width: 100%;
+  height: 35vw;
+  object-fit: cover; }
+
+.entry-info .card-body {
+  height: 150px;
+  overflow: hidden; }

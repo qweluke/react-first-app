@@ -36,7 +36,7 @@ class Home extends React.Component {
     };
 
     handleSubmit = (event) =>  {
-        alert('A name was submitted: ' + this.state.searchForm.query);
+        // alert('A name was submitted: ' + this.state.searchForm.query);
         event.preventDefault();
     };
 
