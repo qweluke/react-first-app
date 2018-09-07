@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Row, Col, Input, Form, FormGroup, Button } from 'reactstrap';
+import {FormattedMessage } from 'react-intl';
 
 import omdbApi from '../services/api/omdbApi';
 import Header from './Header'
@@ -19,9 +20,7 @@ class MovieInfo extends React.Component {
         this.setState({
             imdbId: nextProps.match.params.imdb,
             result: {}
-        }, () => {
-            this.getMovieInfo();
-        });
+        }, this.getMovieInfo);
     }
 
     componentDidMount() {
@@ -45,6 +44,7 @@ class MovieInfo extends React.Component {
             <section>
                 <Container>
                     <Header/>
+
 
                     { Object.keys(this.state.result).length === 0 &&
                         <Row>

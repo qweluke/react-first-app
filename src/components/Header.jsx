@@ -1,16 +1,46 @@
 import React, {Component} from 'react';
-import {Nav, NavItem, NavLink} from 'reactstrap';
+import {Nav, NavItem, NavLink, Dropdown, DropdownItem, DropdownToggle, DropdownMenu} from 'reactstrap';
 import {Link} from 'react-router-dom'
+import {FormattedMessage } from 'react-intl';
 
 export default class Header extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+            dropdownOpen: false
+        };
+    }
+
+    toggle() {
+        this.setState({
+            dropdownOpen: !this.state.dropdownOpen
+        });
+    }
+
     render() {
+
+        console.log( this.props.intl) ;
         return (
             <div>
                 <Nav>
-                    <Link to="/" className="nav-link active">Home</Link>
-                    <Link to="/tt0117731" className="nav-link">Star Trek</Link>
-                    <Link to="/tt0118480" className="nav-link">StarGate</Link>
+                    <Link to="/" className="nav-link active"><FormattedMessage id="header.home" /></Link>
+                    <Link to="/tt0117731" className="nav-link"><FormattedMessage id="header.movie1" /></Link>
+                    <Link to="/tt0118480" className="nav-link"><FormattedMessage id="header.movie2" /></Link>
+
+                    <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                        <DropdownToggle nav caret>
+                            <FormattedMessage id="header.language" />
+                        </DropdownToggle>
+                        <DropdownMenu>
+                            <DropdownItem>en</DropdownItem>
+                            <DropdownItem>pl</DropdownItem>
+                            <DropdownItem divider />
+                            <DropdownItem>auto detect</DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
                 </Nav>
             </div>
         );
