@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col, Input, Form, FormGroup, Button } from 'reactstrap';
+import { Container, Row, Col, Input, Form, FormGroup } from 'reactstrap';
 
 import Header from './Header'
 import MovieItem from './MovieItem'

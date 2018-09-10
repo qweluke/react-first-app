@@ -1,6 +1,6 @@
 import React from 'react'
-import { Container, Row, Col, Input, Form, FormGroup, Button } from 'reactstrap';
-import {FormattedMessage } from 'react-intl';
+import { Container, Row, Col } from 'reactstrap';
+// import {FormattedMessage } from 'react-intl';
 
 import omdbApi from '../services/api/omdbApi';
 import Header from './Header'
@@ -45,7 +45,6 @@ class MovieInfo extends React.Component {
                 <Container>
                     <Header/>
 
-
                     { Object.keys(this.state.result).length === 0 &&
                         <Row>
                             <Col>
@@ -58,7 +57,7 @@ class MovieInfo extends React.Component {
                         <div>
                             <Row className="pb-5">
                                 <Col className="col-4">
-                                    <img className="img-thumbnail" src={this.state.result.Poster} alt="Responsive image"/>
+                                    <img className="img-thumbnail" src={this.state.result.Poster} alt="poster"/>
                                 </Col>
                                 <Col className="col-8">
                                     <Row>

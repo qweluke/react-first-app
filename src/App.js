@@ -6,11 +6,13 @@ import MovieInfo from './components/MovieInfo'
 import './assets/css/app.css';
 
 const App = () => (
-    <Switch>
-        <Route exact path='/' component={Home}/>
-        <Route path='/schedule' component={Schedule}/>
-        <Route path='/:imdb' component={MovieInfo}/>
-    </Switch>
+    <BrowserRouter>
+        <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route path='/schedule' component={Schedule}/>
+            <Route path='/:imdb' component={MovieInfo}/>
+        </Switch>
+    </BrowserRouter>
 );
 
 export default App

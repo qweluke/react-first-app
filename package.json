@@ -9,9 +9,11 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-intl": "^2.4.0",
+    "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "reactstrap": "^6.4.0"
+    "reactstrap": "^6.4.0",
+    "redux": "^4.0.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/assets/scss/ -o src/assets/css/",

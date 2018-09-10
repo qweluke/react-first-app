@@ -13,10 +13,10 @@ import registerServiceWorker from './registerServiceWorker';
 import en from 'react-intl/locale-data/en';
 import pl from 'react-intl/locale-data/pl';
 
-import messages_de from "./translations/pl.json";
+import messages_pl from "./translations/pl.json";
 import messages_en from "./translations/en.json";
 const messages = {
-    'de': messages_de,
+    'pl': messages_pl,
     'en': messages_en
 };
 
@@ -31,9 +31,7 @@ if(locales.indexOf(language) < 0) {
 
 render((
     <IntlProvider locale={language}  messages={messages[language]}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
+        <App />
     </IntlProvider>
 ), document.getElementById('root'));
 registerServiceWorker();
