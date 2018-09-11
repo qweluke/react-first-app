@@ -4,6 +4,7 @@ import Home from './components/Home'
 import Schedule from './components/Schedule'
 import MovieInfo from './components/MovieInfo'
 import './assets/css/app.css';
+import {FormattedMessage} from 'react-intl';
 
 const App = () => (
     <BrowserRouter>

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Nav, Dropdown, DropdownItem, DropdownToggle, DropdownMenu} from 'reactstrap';
 import {Link} from 'react-router-dom'
 import {FormattedMessage} from 'react-intl';
-
+import { IntlConsumer } from "../i18n/IntlWrapper";
 class Header extends Component {
 
     constructor(props) {
@@ -32,12 +32,18 @@ class Header extends Component {
                         <DropdownToggle nav caret>
                             <FormattedMessage id="header.language"/>
                         </DropdownToggle>
-                        <DropdownMenu>
-                            <DropdownItem>en</DropdownItem>
-                            <DropdownItem>pl</DropdownItem>
-                            <DropdownItem divider/>
-                            <DropdownItem>auto detect</DropdownItem>
-                        </DropdownMenu>
+                            <DropdownMenu>
+                                <IntlConsumer>
+                                    {({ switchLocale }) => (
+                                        <React.Fragment>
+                                            <DropdownItem onClick={() => switchLocale('en')}><FormattedMessage id="header.language.list.en"/></DropdownItem>
+                                            <DropdownItem onClick={() => switchLocale('pl')}><FormattedMessage id="header.language.list.pl"/></DropdownItem>
+                                        </React.Fragment>
+                                    )}
+                                </IntlConsumer>
+                                <DropdownItem divider/>
+                                <DropdownItem>auto detect</DropdownItem>
+                            </DropdownMenu>
                     </Dropdown>
                 </Nav>
             </div>

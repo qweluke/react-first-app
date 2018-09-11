@@ -68,13 +68,11 @@ class Home extends React.Component {
                     <Container fluid>
                         <Row className="mt-5 mx-3">
                             {
-                                this.state.results.map((movie, index) => {
-                                    return (
-                                        <Col sm="6" md="4" lg="3" className="mb-4">
-                                            <MovieItem {...movie}/>
-                                        </Col>
-                                    )
-                                })
+                                this.state.results.map((movie, index) => (
+                                    <Col sm="6" md="4" lg="3" className="mb-4" key={index}>
+                                        <MovieItem {...movie}/>
+                                    </Col>
+                                ))
                             }
                         </Row>
                     </Container>

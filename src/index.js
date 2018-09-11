@@ -1,37 +1,31 @@
 import React from 'react';
 import { render } from 'react-dom'
+import { Provider } from "react-redux";
 import { BrowserRouter } from 'react-router-dom'
-import { IntlProvider, addLocaleData } from 'react-intl';
+import { IntlWrapper } from './i18n/IntlWrapper';
 
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
+import {store} from './store'
 
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import en from 'react-intl/locale-data/en';
-import pl from 'react-intl/locale-data/pl';
-
-import messages_pl from "./translations/pl.json";
-import messages_en from "./translations/en.json";
-const messages = {
-    'pl': messages_pl,
-    'en': messages_en
-};
-
-addLocaleData([...en, ...pl]);
-const locales = ['en','pl'];
 
 let language = navigator.language.split(/[-_]/)[0];  // language without region code
 
-if(locales.indexOf(language) < 0) {
-    language = 'en';
+if(localStorage.getItem('_locale')) {
+    language = localStorage.getItem('_locale');
 }
 
+localStorage.setItem('_locale', language);
+
 render((
-    <IntlProvider locale={language}  messages={messages[language]}>
-        <App />
-    </IntlProvider>
+    <Provider store={store}>
+        <IntlWrapper locale={localStorage.getItem('_locale')}>
+            <App />
+        </IntlWrapper>
+    </Provider>
 ), document.getElementById('root'));
 registerServiceWorker();

@@ -1,0 +1,18 @@
+{
+  "header.home": "Home",
+  "header.movie1": "Star Trek",
+  "header.movie2": "StarGate",
+  "header.language": "Język",
+  "header.language.list.en": "en",
+  "header.language.list.pl": "pl",
+
+
+  "movieInfo.director": "Reżyser",
+  "movieInfo.writer": "Scenariusz",
+  "movieInfo.genere": "Gatunek",
+  "movieInfo.production": "Produkcja",
+  "movieInfo.released": "Released",
+  "movieInfo.ratings": "Oceny",
+  "movieInfo.actors": "Aktorzy",
+  "movieInfo.awards": "Nominacje"
+}

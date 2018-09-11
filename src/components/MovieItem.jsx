@@ -12,18 +12,16 @@ class MovieItem extends React.Component {
                 <CardBody >
                     <CardTitle className="col-12">{this.props.Title}</CardTitle>
 
-                    <CardText>
-                        <div className="row">
-                            <div className="col-4">
-                                <small className="text-muted">{this.props.Year}</small>
-                            </div>
-                            <div className="col-8">
-                                <Link to={`/${this.props.imdbID}`} className="btn btn-info btn-sm float-right">
-                                    {this.props.Type} info
-                                </Link>
-                            </div>
+                    <div className="row">
+                        <div className="col-4">
+                            <small className="text-muted">{this.props.Year}</small>
                         </div>
-                    </CardText>
+                        <div className="col-8">
+                            <Link to={`/${this.props.imdbID}`} className="btn btn-info btn-sm float-right">
+                                {this.props.Type} info
+                            </Link>
+                        </div>
+                    </div>
                 </CardBody>
             </Card>
         )

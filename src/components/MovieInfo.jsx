@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap';
-// import {FormattedMessage } from 'react-intl';
+import {FormattedMessage } from 'react-intl';
 
 import omdbApi from '../services/api/omdbApi';
 import Header from './Header'
@@ -72,22 +72,34 @@ class MovieInfo extends React.Component {
                                     <Row>
                                         <Col>
                                             <dl className="row">
-                                                <dt className="col-sm-3">Director</dt>
+                                                <dt className="col-sm-3">
+                                                    <FormattedMessage id="movieInfo.director" />
+                                                </dt>
                                                 <dt className="col-sm-9">{this.state.result.Director}</dt>
 
-                                                <dt className="col-sm-3">Writer</dt>
+                                                <dt className="col-sm-3">
+                                                    <FormattedMessage id="movieInfo.writer" />
+                                                </dt>
                                                 <dt className="col-sm-9">{this.state.result.Writer}</dt>
 
-                                                <dt className="col-sm-3">Genere</dt>
+                                                <dt className="col-sm-3">
+                                                    <FormattedMessage id="movieInfo.genere" />
+                                                </dt>
                                                 <dt className="col-sm-9">{this.state.result.Genere}</dt>
 
-                                                <dt className="col-sm-3">Production</dt>
+                                                <dt className="col-sm-3">
+                                                    <FormattedMessage id="movieInfo.production" />
+                                                </dt>
                                                 <dt className="col-sm-9">{this.state.result.Production}</dt>
 
-                                                <dt className="col-sm-3">Released</dt>
+                                                <dt className="col-sm-3">
+                                                    <FormattedMessage id="movieInfo.released" />
+                                                </dt>
                                                 <dt className="col-sm-9">{this.state.result.Released}</dt>
 
-                                                <dt className="col-sm-3 pt-5">Ratings</dt>
+                                                <dt className="col-sm-3 pt-5">
+                                                    <FormattedMessage id="movieInfo.ratings" />
+                                                </dt>
                                                 <dt className="col-sm-9 pt-5">
                                                     <dl className="row mb-0">
                                                         {this.state.result.Ratings.map((rate, index) => (
@@ -106,14 +118,18 @@ class MovieInfo extends React.Component {
 
                             <Row className="px-4">
                                 <Col>
-                                    <h4>Actors</h4>
+                                    <h4>
+                                        <FormattedMessage id="movieInfo.actors" />
+                                    </h4>
                                     <p>{this.state.result.Actors}</p>
                                 </Col>
                             </Row>
 
                             <Row className="px-4">
                                 <Col>
-                                    <h4>Awards</h4>
+                                    <h4>
+                                        <FormattedMessage id="movieInfo.awards" />
+                                    </h4>
                                     <p>{this.state.result.Awards}</p>
                                 </Col>
                             </Row>
