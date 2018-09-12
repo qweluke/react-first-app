@@ -14,25 +14,26 @@ const messages = {
 addLocaleData([...en, ...pl]);
 const { Provider, Consumer } = React.createContext();
 
-{ // detect locale depending on browser language
-    let language = localStorage.getItem('_locale') || navigator.language.split(/[-_]/)[0];
-
-    if(typeof messages[language] === 'undefined') {
-        language = 'en';
-    }
-
-    localStorage.setItem('_locale', language);
-}
 
 export class IntlWrapper extends Component {
 
     constructor(props) {
         super(props);
 
+        { // detect locale depending on browser language
+            let language = localStorage.getItem('_locale') || navigator.language.split(/[-_]/)[0];
+
+            if(typeof messages[language] === 'undefined') {
+                language = 'en';
+            }
+
+            localStorage.setItem('_locale', language);
+        }
+
         this.switchLocale = (locale) => {
             this.setState({ locale: locale, messages: messages[locale] });
             localStorage.setItem('_locale', locale);
-        }
+        };
 
         // pass everything in state to avoid creating object inside render method (like explained in the documentation)
         this.state = {
@@ -52,7 +53,6 @@ export class IntlWrapper extends Component {
                     key={locale}
                     locale={locale}
                     messages={messages}
-                    defaultLocale="en"
                 >
                     {children}
                 </IntlProvider>

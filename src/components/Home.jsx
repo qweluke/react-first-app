@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Row, Col, Input, Form, FormGroup } from 'reactstrap';
 import { connect } from "react-redux";
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import { updateHomeForm } from "../actions/homepage";
 import { bindActionCreators } from 'redux';
@@ -56,6 +57,9 @@ class Home extends React.Component {
     };
 
     render() {
+        const { intl } = this.props;
+        const { searchForm, results } = this.state;
+
         return(
             <div>
                 <Container>
@@ -65,8 +69,9 @@ class Home extends React.Component {
                         <Col>
                             <Form onSubmit={this.handleSubmit}>
                                 <FormGroup>
-                                    <Input type="text" name="email" id="exampleEmail" className="w-100" placeholder="search for movie"
-                                           value={this.state.searchForm.query}
+                                    <Input type="text" name="email" id="exampleEmail"
+                                           className="w-100" placeholder={intl.formatMessage({id: 'homepage.search.placeholder'})}
+                                           value={searchForm.query}
                                            onChange={this.search}
                                     />
                                 </FormGroup>
@@ -75,11 +80,11 @@ class Home extends React.Component {
                     </Row>
                 </Container>
 
-                { this.state.results.length > 0 &&
+                { results.length > 0 &&
                     <Container fluid>
                         <Row className="mt-5 mx-3">
                             {
-                                this.state.results.map((movie, index) => (
+                                results.map((movie, index) => (
                                     <Col sm="6" md="4" lg="3" className="mb-4" key={index}>
                                         <MovieItem {...movie}/>
                                     </Col>
@@ -108,4 +113,4 @@ const mapDispatchToProps = dispatch => {
 
 Home = connect(mapStateToProps, mapDispatchToProps)(Home);
 
-export default Home
+export default injectIntl(Home)
