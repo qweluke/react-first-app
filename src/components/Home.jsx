@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col, Input, Form, FormGroup } from 'reactstrap';
 import { connect } from "react-redux";
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
 import { updateHomeForm } from "../actions/homepage";
 import { bindActionCreators } from 'redux';
