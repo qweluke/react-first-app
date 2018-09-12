@@ -6,3 +6,14 @@
 .entry-info .card-body {
   height: 150px;
   overflow: hidden; }
+
+.movie-info__bg-image {
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: 0 !important;
+  filter: blur(10px) grayscale(90%) !important;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0.3;
+  z-index: -1; }

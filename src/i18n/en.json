@@ -3,6 +3,7 @@
   "header.movie1": "Star Trek",
   "header.movie2": "StarGate",
   "header.language": "language",
+  "header.language.list.auto": "auto detect",
   "header.language.list.en": "en",
   "header.language.list.pl": "pl",
 

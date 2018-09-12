@@ -39,9 +39,11 @@ class MovieInfo extends React.Component {
     }
 
     render() {
-        // this.getMovieInfo();
+
         return(
             <section>
+                <div className='movie-info__bg-image' style={{background : `url(${this.state.result.Poster})`}}>
+                </div>
                 <Container>
                     <Header/>
 

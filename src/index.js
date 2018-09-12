@@ -6,6 +6,8 @@ import { IntlWrapper } from './i18n/IntlWrapper';
 import 'font-awesome/css/font-awesome.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
+import './assets/css/app.css';
+
 import {store} from './store'
 
 import App from './App';

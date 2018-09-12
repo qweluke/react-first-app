@@ -34,15 +34,15 @@ class Header extends Component {
                         </DropdownToggle>
                             <DropdownMenu>
                                 <IntlConsumer>
-                                    {({ switchLocale }) => (
+                                    {({ switchLocale, autoDetectLocale }) => (
                                         <React.Fragment>
                                             <DropdownItem onClick={() => switchLocale('en')}><FormattedMessage id="header.language.list.en"/></DropdownItem>
                                             <DropdownItem onClick={() => switchLocale('pl')}><FormattedMessage id="header.language.list.pl"/></DropdownItem>
+                                            <DropdownItem divider/>
+                                            <DropdownItem onClick={autoDetectLocale}><FormattedMessage id="header.language.list.auto"/></DropdownItem>
                                         </React.Fragment>
                                     )}
                                 </IntlConsumer>
-                                <DropdownItem divider/>
-                                <DropdownItem>auto detect</DropdownItem>
                             </DropdownMenu>
                     </Dropdown>
                 </Nav>

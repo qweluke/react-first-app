@@ -35,11 +35,23 @@ export class IntlWrapper extends Component {
             localStorage.setItem('_locale', locale);
         };
 
+        this.autoDetectLocale = () => {
+
+            let language =  navigator.language.split(/[-_]/)[0];
+            if(typeof messages[language] === 'undefined') {
+                language = 'en';
+            }
+
+            this.setState({ locale: language, messages: messages[language] });
+            localStorage.setItem('_locale', language);
+        };
+
         // pass everything in state to avoid creating object inside render method (like explained in the documentation)
         this.state = {
             locale: localStorage.getItem('_locale'),
             messages: messages[localStorage.getItem('_locale')],
-            switchLocale: this.switchLocale
+            switchLocale: this.switchLocale,
+            autoDetectLocale: this.autoDetectLocale
         };
     }
 
