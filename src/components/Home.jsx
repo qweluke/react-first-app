@@ -1,5 +1,9 @@
 import React from 'react'
 import { Container, Row, Col, Input, Form, FormGroup } from 'reactstrap';
+import { connect } from "react-redux";
+
+import { updateHomeForm } from "../actions/homepage";
+import { bindActionCreators } from 'redux';
 
 import Header from './Header'
 import MovieItem from './MovieItem'
@@ -11,10 +15,10 @@ class Home extends React.Component {
         super(props);
         this.state = {
             searchForm: {
-                query: '',
+                query: this.props.query,
                 year: null
             },
-            results: []
+            results: this.props.results
         };
     }
 
@@ -23,24 +27,31 @@ class Home extends React.Component {
     }
 
     search = (event) => {
+
+        const { updateHomeForm } = this.props;
+        const query = event.target.value;
         this.setState({
             searchForm: {
-                query: event.target.value,
+                query: query,
                 year: null
             }
         });
 
-        let movies = omdbApi.search(event.target.value);
+        let movies = omdbApi.search(query);
 
         movies.then(response => {
             this.setState({
                 results: response.Search || []
+            });
+
+            updateHomeForm({
+                'search': query,
+                'results': response.Search || []
             })
         });
     };
 
     handleSubmit = (event) =>  {
-        // alert('A name was submitted: ' + this.state.searchForm.query);
         event.preventDefault();
     };
 
@@ -54,7 +65,7 @@ class Home extends React.Component {
                         <Col>
                             <Form onSubmit={this.handleSubmit}>
                                 <FormGroup>
-                                    <Input type="text" name="email" id="exampleEmail" className="w-100" placeholder="with a placeholder"
+                                    <Input type="text" name="email" id="exampleEmail" className="w-100" placeholder="search for movie"
                                            value={this.state.searchForm.query}
                                            onChange={this.search}
                                     />
@@ -81,5 +92,20 @@ class Home extends React.Component {
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        query: state.homepage.search,
+        results: state.homepage.results
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        ...bindActionCreators({ updateHomeForm }, dispatch)
+    }
+};
+
+Home = connect(mapStateToProps, mapDispatchToProps)(Home);
 
 export default Home

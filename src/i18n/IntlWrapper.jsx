@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { IntlProvider, addLocaleData } from 'react-intl'
-import { render } from 'react-dom'
-import { Router } from 'react-router'
 
 import en from 'react-intl/locale-data/en';
 import pl from 'react-intl/locale-data/pl';
@@ -17,28 +14,38 @@ const messages = {
 addLocaleData([...en, ...pl]);
 const { Provider, Consumer } = React.createContext();
 
+{ // detect locale depending on browser language
+    let language = localStorage.getItem('_locale') || navigator.language.split(/[-_]/)[0];
+
+    if(typeof messages[language] === 'undefined') {
+        language = 'en';
+    }
+
+    localStorage.setItem('_locale', language);
+}
+
 export class IntlWrapper extends Component {
 
-    constructor(...args) {
-        super(...args);
+    constructor(props) {
+        super(props);
 
-        this.switchLocale = (locale) =>
+        this.switchLocale = (locale) => {
             this.setState({ locale: locale, messages: messages[locale] });
+            localStorage.setItem('_locale', locale);
+        }
 
         // pass everything in state to avoid creating object inside render method (like explained in the documentation)
         this.state = {
-            locale: "en",
-            messages: messages_en,
+            locale: localStorage.getItem('_locale'),
+            messages: messages[localStorage.getItem('_locale')],
             switchLocale: this.switchLocale
         };
     }
 
-    switchLocale = (locale) =>
-        this.setState({ locale: locale, messages: messages[locale] });
-
     render() {
         const { children } = this.props;
         const { locale, messages } = this.state;
+
         return (
             <Provider value={this.state}>
                 <IntlProvider

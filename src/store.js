@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
-// import reducers from './reducers';
+import { createStore } from 'redux';
+import reducers from './reducers';
 
-export const store = applyMiddleware()(createStore)(null);
+export const store = createStore(reducers);
