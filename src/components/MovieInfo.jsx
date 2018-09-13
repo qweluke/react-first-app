@@ -48,7 +48,7 @@ class MovieInfo extends React.Component {
                     <Header/>
 
                     { Object.keys(this.state.result).length === 0 &&
-                        <Row>
+                        <Row className='text-center'>
                             <Col>
                                 <Loader/>
                             </Col>
