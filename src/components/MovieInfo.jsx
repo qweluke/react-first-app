@@ -100,23 +100,19 @@ class MovieInfo extends React.Component {
                                                 </dt>
                                                 <dt className="col-sm-9">{this.state.result.Released}</dt>
 
-                                                {this.state.result.Ratings &&
-                                                    <div>
-                                                        <dt className="col-sm-3 pt-5">
-                                                            <FormattedMessage id="movieInfo.ratings" />
-                                                        </dt>
-                                                        <dt className="col-sm-9 pt-5">
-                                                            <dl className="row mb-0">
-                                                                {this.state.result.Ratings.map((rate, index) => (
-                                                                    <div key={index}>
-                                                                        <dt className="col-sm-8">{rate.Source}</dt>
-                                                                        <dt className="col-sm-4">{rate.Value}</dt>
-                                                                    </div>
-                                                                ))}
-                                                            </dl>
-                                                        </dt>
-                                                    </div>
-                                                }
+                                                    <dt className="col-sm-3 pt-5">
+                                                        <FormattedMessage id="movieInfo.ratings" />
+                                                    </dt>
+                                                    <dt className="col-sm-9 pt-5">
+                                                        <dl className="row mb-0">
+                                                            {this.state.result.Ratings.map((rate, index) => (
+                                                                <div key={index}>
+                                                                    <dt className="col-sm-8">{rate.Source}</dt>
+                                                                    <dt className="col-sm-4">{rate.Value}</dt>
+                                                                </div>
+                                                            ))}
+                                                        </dl>
+                                                    </dt>
                                             </dl>
                                         </Col>
                                     </Row>
