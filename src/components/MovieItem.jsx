@@ -17,9 +17,17 @@ class MovieItem extends React.Component {
                             <small className="text-muted">{this.props.Year}</small>
                         </div>
                         <div className="col-8">
-                            <Link to={`/${this.props.imdbID}`} className="btn btn-info btn-sm float-right">
+                            {this.props.Type == 'series' &&
+                            <Link to={`/series/${this.props.imdbID}`} className="btn btn-info btn-sm float-right">
                                 {this.props.Type} info
                             </Link>
+                            }
+
+                            {this.props.Type == 'movie' &&
+                            <Link to={`/movie/${this.props.imdbID}`} className="btn btn-info btn-sm float-right">
+                                {this.props.Type} info
+                            </Link>
+                            }
                         </div>
                     </div>
                 </CardBody>

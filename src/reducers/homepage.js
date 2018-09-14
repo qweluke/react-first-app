@@ -1,14 +1,18 @@
 const initialState = {
-    search: '',
+    advanced: false,
+    search: {
+        year: null,
+        query: null
+    },
     results: []
 };
 
 const homepage = (state = initialState, action) => {
     switch (action.type) {
         case 'UPDATE_HOME_FORM':
+            console.log(action.newVal);
             return {
-                search: action.newVal.search,
-                results: action.newVal.results
+                ...action.newVal
             };
         default:
             return state

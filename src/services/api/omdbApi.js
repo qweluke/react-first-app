@@ -32,9 +32,16 @@ function getById(imdb) {
     });
 }
 
+function getSerieEpisodes(imdb, season) {
+    return request({
+        url: `&i=${imdb}&Season=${season}`,
+        method: 'GET'
+    });
+}
+
 
 const omdbApi = {
-    search, getById
+    search, getById, getSerieEpisodes
 };
 
 export default omdbApi;

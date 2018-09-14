@@ -16,5 +16,9 @@
   "movieInfo.released": "Released",
   "movieInfo.ratings": "Ratings",
   "movieInfo.actors": "Actors",
-  "movieInfo.awards": "Awards"
+  "movieInfo.awards": "Awards",
+
+
+  "seriesInfo.seasons": "Seasons",
+  "seriesInfo.season": "Season"
 }

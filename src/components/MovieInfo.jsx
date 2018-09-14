@@ -5,6 +5,7 @@ import {FormattedMessage } from 'react-intl';
 import omdbApi from '../services/api/omdbApi';
 import Header from './Header'
 import Loader from './Loader'
+import SeriesList from "./Pages/Series/SeriesList";
 
 class MovieInfo extends React.Component {
 
@@ -119,31 +120,47 @@ class MovieInfo extends React.Component {
                             </Row>
 
                             <Row className="px-4">
-                                <Col>
-                                    <h4>
-                                        <FormattedMessage id="movieInfo.actors" />
-                                    </h4>
-                                    <p>{this.state.result.Actors}</p>
+                                <Col className={this.state.result.Type === 'series' ? 'col-6' : 'col-12'}>
+                                    <Row>
+                                        <Col>
+                                            <h4>
+                                                <FormattedMessage id="movieInfo.actors" />
+                                            </h4>
+                                            <p>{this.state.result.Actors}</p>
+                                        </Col>
+                                    </Row>
+
+                                    <Row>
+                                        <Col>
+                                            <h4>
+                                                <FormattedMessage id="movieInfo.awards" />
+                                            </h4>
+                                            <p>{this.state.result.Awards}</p>
+                                        </Col>
+                                    </Row>
+
+                                    {this.state.result.BoxOffice &&
+                                    <Row>
+                                        <Col>
+                                            <h4>Box Office</h4>
+                                            <p>{this.state.result.BoxOffice}</p>
+                                        </Col>
+                                    </Row>
+                                    }
                                 </Col>
+
+                                {this.state.result.Type === 'series' &&
+                                    <Col className='col-6'>
+                                        <SeriesList imdbId={this.state.result.imdbID} totalSeasons={this.state.result.totalSeasons} />
+                                    </Col>
+                                }
+
+
                             </Row>
 
-                            <Row className="px-4">
-                                <Col>
-                                    <h4>
-                                        <FormattedMessage id="movieInfo.awards" />
-                                    </h4>
-                                    <p>{this.state.result.Awards}</p>
-                                </Col>
-                            </Row>
 
-                            {this.state.result.BoxOffice &&
-                            <Row className="px-4">
-                                <Col>
-                                    <h4>Box Office</h4>
-                                    <p>{this.state.result.BoxOffice}</p>
-                                </Col>
-                            </Row>
-                            }
+
+
 
                         </div>
                     }
