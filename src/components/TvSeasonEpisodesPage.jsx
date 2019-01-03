@@ -106,7 +106,7 @@ class TvSeasonEpisodesPage extends React.Component {
                                                             </li>
                                                             {
                                                                 this.state.result.seasons.map(season => (
-                                                                    <li className="page-item" title={season.name} key={season.season_number}>
+                                                                    <li className={`page-item ${Number(this.props.match.params.seasonNum) === season.season_number ? 'active' : ''}`} title={season.name} key={season.season_number}>
                                                                         <a className="page-link" href={`/tv/${this.state.id}/season/${season.season_number}/episodes`}>{season.season_number}</a>
                                                                     </li>
                                                                 ))
