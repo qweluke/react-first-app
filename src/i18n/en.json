@@ -8,6 +8,7 @@
   "header.language.list.pl": "pl",
 
   "homepage.search.placeholder": "search for a movie",
+  "reviews": "Reviews",
 
   "movieInfo.director": "Director",
   "movieInfo.writer": "Writer",
@@ -20,5 +21,7 @@
 
 
   "seriesInfo.seasons": "Seasons",
-  "seriesInfo.season": "Season"
+  "seriesInfo.season": "Season",
+  "seriesInfo.firstEpisode": "First episode",
+  "seriesInfo.createdBy": "Created by"
 }

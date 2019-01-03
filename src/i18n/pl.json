@@ -9,6 +9,8 @@
 
   "homepage.search.placeholder": "szukaj filmu",
 
+  "reviews": "Recenzje",
+
   "movieInfo.director": "Reżyser",
   "movieInfo.writer": "Scenariusz",
   "movieInfo.genere": "Gatunek",
@@ -19,5 +21,7 @@
   "movieInfo.awards": "Nominacje",
 
   "seriesInfo.seasons": "Sezony",
-  "seriesInfo.season": "Sezon"
+  "seriesInfo.season": "Sezon",
+  "seriesInfo.firstEpisode": "Pierwszy odcinek",
+  "seriesInfo.createdBy": "Created by"
 }

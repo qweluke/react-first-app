@@ -1,5 +1,5 @@
 import React from 'react'
-import {Container, Row, Col, Input, Form, FormGroup, Button, Collapse, Label} from 'reactstrap';
+import {Container, Row, Col, Input, Form, Button, Collapse} from 'reactstrap';
 import {connect} from "react-redux";
 import {injectIntl} from 'react-intl';
 
@@ -8,7 +8,7 @@ import {bindActionCreators} from 'redux';
 
 import Header from './Header'
 import MovieItem from './MovieItem'
-import omdbApi from '../services/api/omdbApi';
+import tmdb from '../services/api/tmdb';
 
 class Home extends React.Component {
 
@@ -47,14 +47,14 @@ class Home extends React.Component {
 
         let movies = [];
         if (advanced) {
-            movies = omdbApi.search(query, type, year);
+            movies = tmdb.search(query, type, year);
         } else {
-            movies = omdbApi.search(query);
+            movies = tmdb.search(query);
         }
 
         movies.then(response => {
             this.setState({
-                results: response.Search || []
+                results: response.results || []
             });
 
             updateHomeForm({
@@ -76,7 +76,7 @@ class Home extends React.Component {
         const {advanced, query, year, type, results} = this.state;
 
         return (
-            <div>
+            <React.Fragment>
                 <Container>
                     <Header/>
 
@@ -133,7 +133,7 @@ class Home extends React.Component {
                     <Row className="mt-5 mx-3">
                         {
                             results.map((movie, index) => (
-                                <Col sm="6" md="4" lg="3" className="mb-4" key={index}>
+                                <Col sm="6" md="4" lg="3" xl='2' className="mb-4" key={index}>
                                     <MovieItem {...movie}/>
                                 </Col>
                             ))
@@ -141,7 +141,7 @@ class Home extends React.Component {
                     </Row>
                 </Container>
                 }
-            </div>
+            </React.Fragment>
         )
     }
 }

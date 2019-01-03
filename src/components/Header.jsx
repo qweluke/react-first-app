@@ -25,8 +25,8 @@ class Header extends Component {
             <div>
                 <Nav>
                     <Link to="/" className="nav-link active"><FormattedMessage id="header.home"/></Link>
-                    <Link to="/tt0117731" className="nav-link"><FormattedMessage id="header.movie1"/></Link>
-                    <Link to="/tt0118480" className="nav-link"><FormattedMessage id="header.movie2"/></Link>
+                    <Link to="/movie/199" className="nav-link"><FormattedMessage id="header.movie1"/></Link>
+                    <Link to="/tv/4629" className="nav-link"><FormattedMessage id="header.movie2"/></Link>
 
                     <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                         <DropdownToggle nav caret>

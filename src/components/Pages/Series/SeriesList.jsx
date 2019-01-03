@@ -3,7 +3,7 @@ import {UncontrolledCollapse, Container, Row, Col} from 'reactstrap';
 import {FormattedMessage} from 'react-intl';
 
 import Loader from "../../Loader";
-import omdbApi from "../../../services/api/omdbApi";
+import tmbd from "../../../services/api/tmdb";
 
 class SeriesList extends React.Component {
 
@@ -16,16 +16,15 @@ class SeriesList extends React.Component {
     }
 
     componentDidMount = () => {
-        const {imdbId, totalSeasons} = this.props;
+        const {id, totalSeasons} = this.props;
 
         this.setState({
             result: []
         });
 
         for (let i = 1; i <= totalSeasons; i++) {
-            omdbApi.getSerieEpisodes(imdbId, i)
+            tmbd.getSerieEpisodes(id, i)
                 .then((response) => {
-
                     this.setState(prevState => ({
                         result: this.sortSeasons([...prevState.result, response])
                     }))
@@ -35,7 +34,7 @@ class SeriesList extends React.Component {
 
     sortSeasons = (seasons) => {
         return seasons.sort((a, b) => {
-            return (a.Season > b.Season) ? 1 : ((b.Season > a.Season) ? -1 : 0);
+            return (a.season_number > b.season_number) ? 1 : ((b.season_number > a.season_number) ? -1 : 0);
         })
     }
 
@@ -58,25 +57,26 @@ class SeriesList extends React.Component {
 
                     {
                         this.state.result.map((season) => (
-                            <Col className='col-12'>
+                            <Col className='col-12' key={season.season_number} >
                                 <Row>
-                                    <Col className='col-12' id={`seasonToggler-${season.Season}`}>
-                                        <h5><FormattedMessage id="seriesInfo.season" />: {season.Season}</h5>
+                                    <Col className='col-12' id={`seasonToggler-${season.season_number}`}>
+                                        <h5><FormattedMessage id="seriesInfo.season" />: {season.season_number}</h5>
                                     </Col>
                                 </Row>
-                                {season.Episodes.map((episode, index) => (
+                                {season.episodes.map((episode, index) => (
                                     <UncontrolledCollapse
-                                        className='row' key={index}
-                                        toggler={`seasonToggler-${season.Season}`}>
+                                        key={episode.episode_number}
+                                        className='row'
+                                        toggler={`seasonToggler-${season.season_number}`}>
                                         <Col className='col-1'>
-                                            #{episode.Episode}
+                                            #{episode.episode_number}
                                         </Col>
                                         <Col className='col-8'>
-                                            {episode.Title}
+                                            {episode.name}
                                         </Col>
 
                                         <Col className='col-3'>
-                                            {episode.Released}
+                                            {episode.air_date}
                                         </Col>
                                     </UncontrolledCollapse>
                                 ))}
